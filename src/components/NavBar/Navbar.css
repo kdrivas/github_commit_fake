@@ -1,0 +1,14 @@
+.nav-bar {
+	display: flex;
+	padding-left: 5%;
+	background-color: rgb(242, 242, 242);
+	align-items: center;
+}
+
+.nav-bar--sm{
+	height: 75px;
+}
+
+.nav-bar--xl{
+	height: 100px;
+}
