@@ -1,0 +1,15 @@
+.commit__button {
+	width: 110px;
+	display: flex;
+	text-transform: lowercase;
+	background: rgb(107, 121, 247);
+}
+
+.commit__button-group{
+	background: rgb(242, 242, 242);
+}
+
+.commit__button:hover {
+	background-color: green !important;
+	color: #FFF;
+}
