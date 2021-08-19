@@ -12,10 +12,12 @@ const AppFrame = ({children}) => {
 			<div>
 				{children}
 			</div>
-			<ButtonGroup>
-				<Button>Newer</Button>
-				<Button>Older</Button>
-			</ButtonGroup>
+			<div className="app-frame__buttons">
+				<ButtonGroup>
+					<Button>Newer</Button>
+					<Button>Older</Button>
+				</ButtonGroup>
+			</div>
 		</div>
 	);
 };
