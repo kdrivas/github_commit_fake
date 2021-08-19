@@ -14,7 +14,7 @@ const AppFrame = ({children}) => {
 			</div>
 			<div className="app-frame__buttons">
 				<ButtonGroup>
-					<Button>Newer</Button>
+					<Button disabled={true}>Newer</Button>
 					<Button>Older</Button>
 				</ButtonGroup>
 			</div>
