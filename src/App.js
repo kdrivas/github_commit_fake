@@ -1,7 +1,7 @@
-import Commit from "../components/Commit/Commit";
+import React from 'react';
 import AppFrame from "../components/AppFrame/AppFrame";
-import ListCommit from "../components/ListCommit/ListCommit";
 import GroupCommit from "../components/GroupCommit/GroupCommit";
+import { Provider } from 'react-redux'
 
 const data = [
 	{
@@ -162,96 +162,18 @@ const data = [
 					}
 			]
 	},
-	{
-			"sha": "51113751de6f8598ce55862f4ee178f8a5e7aedb",
-			"node_id": "MDY6Q29tbWl0Mzg1MTEwMjYwOjUxMTEzNzUxZGU2Zjg1OThjZTU1ODYyZjRlZTE3OGY4YTVlN2FlZGI=",
-			"commit": {
-					"author": {
-							"name": "kervyRivas",
-							"email": "a20112128@pucp.pe",
-							"date": "2021-07-21T03:44:40Z"
-					},
-					"committer": {
-							"name": "kervyRivas",
-							"email": "a20112128@pucp.pe",
-							"date": "2021-07-21T03:44:40Z"
-					},
-					"message": "Update readme",
-					"tree": {
-							"sha": "d2560917a8aae4872b0e26da46aac5211d553c30",
-							"url": "https://api.github.com/repos/kdrivas/streamlit_app/git/trees/d2560917a8aae4872b0e26da46aac5211d553c30"
-					},
-					"url": "https://api.github.com/repos/kdrivas/streamlit_app/git/commits/51113751de6f8598ce55862f4ee178f8a5e7aedb",
-					"comment_count": 0,
-					"verification": {
-							"verified": false,
-							"reason": "unsigned",
-							"signature": null,
-							"payload": null
-					}
-			},
-			"url": "https://api.github.com/repos/kdrivas/streamlit_app/commits/51113751de6f8598ce55862f4ee178f8a5e7aedb",
-			"html_url": "https://github.com/kdrivas/streamlit_app/commit/51113751de6f8598ce55862f4ee178f8a5e7aedb",
-			"comments_url": "https://api.github.com/repos/kdrivas/streamlit_app/commits/51113751de6f8598ce55862f4ee178f8a5e7aedb/comments",
-			"author": {
-					"login": "kdrivas",
-					"id": 19364805,
-					"node_id": "MDQ6VXNlcjE5MzY0ODA1",
-					"avatar_url": "https://avatars.githubusercontent.com/u/19364805?v=4",
-					"gravatar_id": "",
-					"url": "https://api.github.com/users/kdrivas",
-					"html_url": "https://github.com/kdrivas",
-					"followers_url": "https://api.github.com/users/kdrivas/followers",
-					"following_url": "https://api.github.com/users/kdrivas/following{/other_user}",
-					"gists_url": "https://api.github.com/users/kdrivas/gists{/gist_id}",
-					"starred_url": "https://api.github.com/users/kdrivas/starred{/owner}{/repo}",
-					"subscriptions_url": "https://api.github.com/users/kdrivas/subscriptions",
-					"organizations_url": "https://api.github.com/users/kdrivas/orgs",
-					"repos_url": "https://api.github.com/users/kdrivas/repos",
-					"events_url": "https://api.github.com/users/kdrivas/events{/privacy}",
-					"received_events_url": "https://api.github.com/users/kdrivas/received_events",
-					"type": "User",
-					"site_admin": false
-			},
-			"committer": {
-					"login": "kdrivas",
-					"id": 19364805,
-					"node_id": "MDQ6VXNlcjE5MzY0ODA1",
-					"avatar_url": "https://avatars.githubusercontent.com/u/19364805?v=4",
-					"gravatar_id": "",
-					"url": "https://api.github.com/users/kdrivas",
-					"html_url": "https://github.com/kdrivas",
-					"followers_url": "https://api.github.com/users/kdrivas/followers",
-					"following_url": "https://api.github.com/users/kdrivas/following{/other_user}",
-					"gists_url": "https://api.github.com/users/kdrivas/gists{/gist_id}",
-					"starred_url": "https://api.github.com/users/kdrivas/starred{/owner}{/repo}",
-					"subscriptions_url": "https://api.github.com/users/kdrivas/subscriptions",
-					"organizations_url": "https://api.github.com/users/kdrivas/orgs",
-					"repos_url": "https://api.github.com/users/kdrivas/repos",
-					"events_url": "https://api.github.com/users/kdrivas/events{/privacy}",
-					"received_events_url": "https://api.github.com/users/kdrivas/received_events",
-					"type": "User",
-					"site_admin": false
-			},
-			"parents": [
-					{
-							"sha": "96de8db8b20592229466fd625fbda2f7ab3a9446",
-							"url": "https://api.github.com/repos/kdrivas/streamlit_app/commits/96de8db8b20592229466fd625fbda2f7ab3a9446",
-							"html_url": "https://github.com/kdrivas/streamlit_app/commit/96de8db8b20592229466fd625fbda2f7ab3a9446"
-					}
-			]
-	}
 ]
 
-function MainPage() {
-  return (
-    <div>
+const App = props => {
+	return (
+		<Provider store={store}>
 			<AppFrame>
 				<GroupCommit/>
 				<GroupCommit/>
 			</AppFrame>
-    </div>
-  );
-}
+		</Provider>
+	);
+};
 
-export default MainPage;
+
+export default App;
