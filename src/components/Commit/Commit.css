@@ -1,15 +1,59 @@
-.commit__button {
-	width: 110px;
+.commit {
+	height: 50px;
+	width: 90%;
+	margin: auto;
+}
+
+.commit-grid {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	grid-gap: 10%;
+}
+
+.commit__info {
+	font-size: 12px;
+}
+
+.commit__buttons {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+.commit__info__title {
+	font-size: 16px;
+	margin-bottom: 5px;
+	font-weight: 700;
 	display: flex;
 	text-transform: lowercase;
-	background: rgb(107, 121, 247);
 }
 
-.commit__button-group{
-	background: rgb(242, 242, 242);
+.commit__info__title:hover {
+	color: #0366d6;
+	text-decoration: underline;
 }
 
-.commit__button:hover {
-	background-color: green !important;
-	color: #FFF;
+.commit__info__descrip {
+	font-size: 13px;
+	margin-bottom: 0px;
+	display: flex;
+	gap: 6px;
+}
+
+.avatar-user {
+	border-radius: 50%;
+}
+
+.info__user{
+	font-weight: 700;
+}
+
+.info__user:hover {
+	text-decoration: underline;
+}
+
+.info__days-before{
+	color: #6a737d;
+	font-weight: 500;
 }

@@ -1,0 +1,32 @@
+.group-commit {
+	width: 90%;
+	display: flex;
+	margin: auto;
+}
+
+.group__text {
+	font-size: 15px;
+	color: #586069;
+	padding: 0;
+	margin: 0;
+}
+
+.timeline{
+	width: 90%;
+	margin: auto;
+}
+
+.separator {
+	display: inline-block;
+  overflow: hidden;
+}
+
+.group__icon {
+	color: #586069;
+}
+
+.vertical-line {
+  border-left: 2px solid #d1d5da;
+	height: 100%;
+	transform: translate(40%);
+}

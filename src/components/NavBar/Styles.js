@@ -8,26 +8,27 @@ const useSelectorStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		display: 'flex',
 		background: 'white',
-		color: deepPurple[500],
+		color: '#0366d6',
 		fontWeight: 1,
-		borderStyle:'none',
+		borderStyle:'solid',
 		borderWidth: 2,
 		borderRadius: 12,
 		paddingLeft: 24,
 		paddingTop: 10,
 		paddingBottom: 10,
+		borderColor: '#e1e4e8',
 		boxShadow: '0px 5px 8px -3px rgba(0,0,0,0.14)',
 		"&:focus":{
 			borderRadius: 12,
 			background: 'white',
-			borderColor: deepPurple[100]
+			borderColor: '#e1e4e8',
 		},
 	}
 }))
 
 const useIconStyles = makeStyles((theme) => ({
 	icon:{
-    color: deepPurple[300],
+    color: '#0366d6',
     right: 12,
     position: 'absolute',
     userSelect: 'none',
@@ -51,14 +52,14 @@ const useMenuStyles = makeStyles((theme) => ({
 			paddingBottom:10,
 		},
 		"& li:hover":{
-			background: deepPurple[100]
+			background: '#79b8ff'
 		},
 		"& li.Mui-selected":{
 			color:'white',
-			background: deepPurple[400]
+			background: '#0366d6'
 		},
 		"& li.Mui-selected:hover":{
-			background: deepPurple[500]
+			background: '#0366d6'
 		}
 	}
 }))
