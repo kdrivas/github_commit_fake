@@ -18,11 +18,27 @@ const useSelectorStyles = makeStyles((theme) => ({
 		paddingBottom: 10,
 		borderColor: '#e1e4e8',
 		boxShadow: '0px 5px 8px -3px rgba(0,0,0,0.14)',
+		height: 20,
 		"&:focus":{
 			borderRadius: 12,
 			background: 'white',
 			borderColor: '#e1e4e8',
 		},
+	}
+}))
+
+const useSkeletonStyles = makeStyles((theme) => ({
+	root: {
+		minWidth: 180,
+		height: 20,
+		alignItems: 'center',
+		display: 'flex',
+		fontWeight: 10,
+		borderWidth: 4,
+		borderRadius: 12,
+		paddingLeft: 24,
+		paddingTop: 10,
+		paddingBottom: 10,
 	}
 }))
 
@@ -64,4 +80,4 @@ const useMenuStyles = makeStyles((theme) => ({
 	}
 }))
 
-export {useSelectorStyles, useMenuStyles, useIconStyles}
+export {useSelectorStyles, useMenuStyles, useIconStyles, useSkeletonStyles}

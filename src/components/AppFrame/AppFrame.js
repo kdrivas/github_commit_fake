@@ -8,7 +8,7 @@ import './AppFrame.css';
 const AppFrame = ({children}) => {
 	return (
 		<div className="container-all">
-			<Navbar branches={['main', 'header']}/>
+			<Navbar/>
 			<div>
 				{children}
 			</div>
