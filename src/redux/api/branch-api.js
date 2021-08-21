@@ -1,4 +1,8 @@
 import defaultAxios from 'axios'
+import {
+	NAME_REPO,
+	NAME_USER
+} from './../../constants/api'
 
 const axios = defaultAxios.create({
   baseURL: 'https://api.github.com/',
@@ -7,7 +11,7 @@ const axios = defaultAxios.create({
 
 export const getAllBranches = async () => {
 	try {
-		const payload = await axios.get('repos/kdrivas/streamlit_app/branches')
+		const payload = await axios.get(`repos/${NAME_USER}/${NAME_REPO}/branches`)
 		return payload.data
 	} catch(err) {
 		return console.error(err)

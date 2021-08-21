@@ -27,11 +27,17 @@
 	font-weight: 700;
 	display: flex;
 	text-transform: lowercase;
+	color: #2f363d;
+	text-decoration: none;
 }
 
 .commit__info__title:hover {
 	color: #0366d6;
 	text-decoration: underline;
+}
+
+.commit__info__title:visited {
+	text-decoration: none;
 }
 
 .commit__info__descrip {
@@ -47,10 +53,17 @@
 
 .info__user{
 	font-weight: 700;
+	color: #2f363d;
+	text-decoration: none;
 }
 
 .info__user:hover {
 	text-decoration: underline;
+}
+
+.info_user:visited {
+	color: #2f363d;
+	text-decoration: none;
 }
 
 .info__days-before{

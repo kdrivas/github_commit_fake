@@ -1,26 +1,29 @@
 import { 
 	GET_COMMITS,
-	SET_LOADING
+	SET_CURRENT_PAGE
 } from '../actions/commit-action'
 
 // Define your state here
 const initialState = {
-	loading: false,
-	commit: {}
+	commits: {},
+	currentPage: 1,
 }
 
 export default(state = initialState, {type, payload}) => {
 	switch(type) {
-		case SET_LOADING:
-			return {
-				...state,
-				loading: true
-			}
 		case GET_COMMITS:
+			console.log('dentro de reducer payload', payload)
+			const commitData = payload
+			const newCommit = {...commitData, ...state.commits}
+			console.log('dentro del reducer newCommit', newCommit)
 			return {
 				...state,
-				branch: payload,
-				loading: false
+				commits: newCommit,
+			}
+		case SET_CURRENT_PAGE:
+			return {
+				...state,
+				currentPage: payload
 			}
 		default:
 			return state

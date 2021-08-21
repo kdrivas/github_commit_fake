@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {useSelectorStyles, useMenuStyles, useIconStyles, useSkeletonStyles} from './Styles';
 
 import {
-	GET_BRANCHES_REQUESTED
+	GET_BRANCHES_REQUESTED, SET_CURRENT_BRANCH_REQUESTED
 } from '../../redux/actions/branch-action'
 
 import { connect } from 'react-redux'
@@ -19,7 +19,7 @@ import './Navbar.css'
 
 const renderMenuItem = (value, index) => {
 	return (
-		<MenuItem value={value} key={index}>
+		<MenuItem value={index} key={index}>
 			<ListItemIcon>
 				<SortIcon/>
 			</ListItemIcon>
@@ -31,26 +31,20 @@ const renderMenuItem = (value, index) => {
 }
 
 const Navbar = ({
-  branch: { loading, branch },
-  getBranches
+  branch: { branches, currentBranch},
+  getBranches,
+	setCurrentBranchIndex
 }) => {
 
 	useEffect(() => {
 		getBranches();
 	}, [])
 
-	useEffect(() => {
-		const nameBranch = branch.map(e => e.name)
-		setCurrentBranch(nameBranch[0])
-	}, [branch])
-
-  const [currentBranch, setCurrentBranch] = useState(null);
 	const selectorStyles = useSelectorStyles()
 	const menuStyles = useMenuStyles()
 	const skeletonStyles = useSkeletonStyles()
 	const iconStyles = useIconStyles()
 
-	console.log(branch)
 	const menuProps = {
 		classes: menuStyles,
     anchorOrigin: {
@@ -65,7 +59,7 @@ const Navbar = ({
 	};
 
   const handleChange = (event) => {
-    setCurrentBranch(event.target.value);
+    setCurrentBranchIndex(event.target.value);
   };
 
   const iconComponent = (props) => {
@@ -73,14 +67,13 @@ const Navbar = ({
       <ExpandMoreIcon className={props.className + " " + iconStyles.icon}/>
   	)
 	};
-	const c = false
 	return (
 		<>
 			<Grid
 				container
 				className="nav-bar nav-bar--xl"
 			>
-				{currentBranch ? (
+				{(branches.length > 0) ? (
 					<FormControl>
 						<Select
 							disableUnderline
@@ -91,7 +84,7 @@ const Navbar = ({
 							onChange={handleChange}
 						>
 							{
-								branch.map((value, index) => renderMenuItem(value.name, index))
+								branches.map((value, index) => renderMenuItem(value.name, index))
 							}
 						</Select>
 					</FormControl>) :
@@ -107,7 +100,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getBranches: () => dispatch({ type: GET_BRANCHES_REQUESTED }),
+  setCurrentBranchIndex: (data) => dispatch({ type: SET_CURRENT_BRANCH_REQUESTED, payload: data}),
+	getBranches: () => dispatch({ type: GET_BRANCHES_REQUESTED }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

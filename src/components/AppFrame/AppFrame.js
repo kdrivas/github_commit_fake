@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Navbar from '../NavBar/Navbar';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import './AppFrame.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Navbar from '../NavBar/Navbar'
+import Footer from './../Footer/Footer'
+import './AppFrame.css'
 
 const AppFrame = ({children}) => {
 	return (
@@ -13,10 +12,7 @@ const AppFrame = ({children}) => {
 				{children}
 			</div>
 			<div className="app-frame__buttons">
-				<ButtonGroup>
-					<Button disabled={true}>Newer</Button>
-					<Button>Older</Button>
-				</ButtonGroup>
+				<Footer/>
 			</div>
 		</div>
 	);

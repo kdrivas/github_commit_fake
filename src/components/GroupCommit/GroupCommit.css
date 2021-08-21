@@ -2,10 +2,21 @@
 	width: 90%;
 	display: flex;
 	margin: auto;
+	justify-content: center;
+}
+
+.grid-commit {
+	display: grid;
+	width: 100%;
+}
+
+.block-date {
+	display: flex
 }
 
 .group__text {
-	font-size: 15px;
+	font-weight: 500;
+	font-size: 14px;
 	color: #586069;
 	padding: 0;
 	margin: 0;
