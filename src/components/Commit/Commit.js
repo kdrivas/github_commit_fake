@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -7,6 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 import './Commit.css'
+
+const usePopoverStyles = makeStyles((theme) => ({
+  popover: {
+    pointerEvents: 'none',
+  },
+  paper: {
+    pointerEvents: 'auto',
+    padding: theme.spacing(2),
+  },
+}));
 
 const useButtonTextStyles = makeStyles((theme) => ({
 	root: {
@@ -37,20 +47,31 @@ const useButtonIconStyles = makeStyles((theme) => ({
 	}
 }))
 
-const Commit = ({message, user, daysBefore, commitSha, shaUrl, repoUrl, userUrl, avatarUrl}) => {
-	const [anchorEl, setAnchorEl] = useState(null);
+const Commit = ({message, userId, userName, daysBefore, commitSha, shaUrl, repoUrl, userUrl, avatarUrl}) => {
+	const [copyPop, setCopyPop] = useState(null);
+  const [userPop, setUserPop] = useState(false);
+	const userRefPop = useRef(null)
+
+  const popoverEnter = (event) => {
+    setUserPop(true)
+  };
+
+  const popoverLeave = () => {
+    setUserPop(false)
+  };
 
   const handleClick = (event) => {
 		navigator.clipboard.writeText(commitSha)
-    setAnchorEl(event.currentTarget);
+    setCopyPop(event.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setCopyPop(null);
   };
 
 	const buttonTextStyles = useButtonTextStyles()
 	const buttonIconStyles = useButtonIconStyles()
+	const popoverStyles = usePopoverStyles();
 
 	return (
 		<div className="commit">
@@ -58,8 +79,24 @@ const Commit = ({message, user, daysBefore, commitSha, shaUrl, repoUrl, userUrl,
 			<div className="commit__info">
 				<a className="commit__info__title" href={shaUrl}>{message}</a>
 				<div className="commit__info__descrip">
-					<a className="info__avatar" href={userUrl}><img height="20" width="20" alt={user} src={avatarUrl} className="avatar-user"/></a>
-					<a href={userUrl} className="info__user"> {user}</a> 
+					<a className="info__avatar" href={userUrl} ref={userRefPop}><img  onMouseEnter={popoverEnter} onMouseLeave={popoverLeave} height="20" width="20" alt={userId} src={avatarUrl} className="avatar-user"/></a>
+					<Popover
+						className={popoverStyles.popover}
+						classes={{ paper: popoverStyles.paper, }}
+						open={userPop}
+						anchorEl={userRefPop.current}
+						anchorOrigin={{ vertical: 'bottom', horizontal: 'left', }}
+						transformOrigin={{ vertical: 'top', horizontal: 'left', }}
+						PaperProps={{ onMouseEnter: popoverEnter, onMouseLeave: popoverLeave }}
+						disableRestoreFocus
+					>
+						<div className="commit__popover-info">
+							<a className="info__avatar" href={userUrl}><img height="60" width="60" alt={userId} src={avatarUrl} className="avatar-user"/></a>
+							<a className="popover__user-name" href={userUrl}>{userName}</a>
+							<span className="popover__user-id">{userId}</span>
+						</div>
+					</Popover>
+					<a href={userUrl} className="info__user"> {userId}</a> 
 					<span className="info__days-before">commited on {daysBefore}</span>
 				</div>
 			</div>
@@ -67,8 +104,8 @@ const Commit = ({message, user, daysBefore, commitSha, shaUrl, repoUrl, userUrl,
 				<ButtonGroup>
 					<Button classes={buttonIconStyles} onClick={handleClick}><i className="fas fa-copy fa-lg"></i></Button>
 					<Popover
-						open={Boolean(anchorEl)}
-						anchorEl={anchorEl}
+						open={Boolean(copyPop)}
+						anchorEl={copyPop}
 						onClose={handleClose}
 						anchorOrigin={{
 							vertical: 'bottom',
@@ -97,7 +134,7 @@ const Commit = ({message, user, daysBefore, commitSha, shaUrl, repoUrl, userUrl,
 
 Commit.propTypes = {
 	title: PropTypes.string,
-	user: PropTypes.string,
+	userId: PropTypes.string,
 	daysBefore: PropTypes.number,
 	sha: PropTypes.string,
 };

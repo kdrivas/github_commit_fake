@@ -20,7 +20,7 @@ const ListCommit = ({listCommit}) => {
 			<List>
               {listCommit.map( (element, value) => (
                 <ListItem className="list-commit-item" key={value}>
-                  <Commit message={element.message} user={element.user} daysBefore={element.daysBefore} commitSha={element.commitSha} shaUrl={element.shaUrl} repoUrl={element.repoUrl} userUrl={element.userUrl} avatarUrl={element.avatarUrl}/>
+                  <Commit message={element.message} userId={element.userId} userName={element.userName} daysBefore={element.daysBefore} commitSha={element.commitSha} shaUrl={element.shaUrl} repoUrl={element.repoUrl} userUrl={element.userUrl} avatarUrl={element.avatarUrl}/>
                 </ListItem>
               ))}
       </List>
