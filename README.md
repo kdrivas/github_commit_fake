@@ -5,6 +5,7 @@ This project try to copy the commit history page from github
 - Run the project with the following command
 
 ```
+npm i
 npm start
 ```
 
