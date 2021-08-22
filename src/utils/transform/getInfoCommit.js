@@ -18,7 +18,6 @@ const getGroupDate = (data) => {
 	for (let i = 0; i < data.length; i++ ){
 		let dateParse = new Date(data[i].date)
 
-		let month = dateParse.getUTCMonth() + 1; 
 		let day = dateParse.getUTCDate();
 		let year = dateParse.getUTCFullYear();
 		let shortMonth = dateParse.toLocaleString('en-us', { month: 'short' })

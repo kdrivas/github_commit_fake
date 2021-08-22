@@ -19,7 +19,7 @@ const AppFrame = ({children}) => {
 };
 
 AppFrame.propTypes = {
-	
+	children: PropTypes.node.isRequired
 };
 
 export default AppFrame;

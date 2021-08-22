@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
@@ -21,21 +21,16 @@ const Footer = ({
 		if (currentPage == 1){
 			setDisabledOlder(false)
 			setDisabledNewer(true)
-			console.log('Entre a condicion 1')
 		} else if (commits[`${branches[currentBranch].commit.sha}-${currentPage}`] !== undefined && Object.keys(commits[`${branches[currentBranch].commit.sha}-${currentPage}`]).length > 0 && currentPage > 1) {
 			setDisabledOlder(false)
 			setDisabledNewer(false)
-			console.log('Entre a condicion 2')
 		} else if (commits[`${branches[currentBranch].commit.sha}-${currentPage}`] !== undefined && Object.keys(commits[`${branches[currentBranch].commit.sha}-${currentPage}`]).length == 0 && currentPage > 1) {
-				setDisabledOlder(true)
-				setDisabledNewer(false)
-				console.log('Entre a condicion 2')
+			setDisabledOlder(true)
+			setDisabledNewer(false)
 		} else if (commits[`${branches[currentBranch].commit.sha}-${currentPage}`] === undefined) {
 			setDisabledOlder(true)
-			setDisabledNewer(true)
 			console.log('Entre a condicion 3', commits[`${branches[currentBranch].commit.sha}-${currentPage}`], `${branches[currentBranch].commit.sha}-${currentPage}`)
 		}
-		console.log('Dentro del footer', currentPage)
 	}, [currentPage, commits, branches])
 
 	const handleNewer = () => {
@@ -51,12 +46,16 @@ const Footer = ({
 			<Button disabled={disabledNewer} onClick={handleNewer}>Newer</Button>
 			<Button disabled={disabledOlder} onClick={handleOlder}>Older</Button>
 		</ButtonGroup>
-	);
-};
+	)
+}
 
-Footer.propTypes = {
-	
-};
+Footer.propTypes = {	
+	branches: PropTypes.array,
+	currentBranch: PropTypes.number,
+	commits: PropTypes.shape({commit: PropTypes.string}),
+	currentPage: PropTypes.number,
+	setCurrentPage: PropTypes.func.isRequired
+}
 
 const mapStateToProps = (state) => ({
 	commit: state.commit,

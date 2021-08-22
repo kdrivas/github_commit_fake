@@ -1,13 +1,14 @@
-import React, {useState, useDispatch, useSelector, useEffect} from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Skeleton from '@material-ui/lab/Skeleton';
-import Grid from "@material-ui/core/Grid";
-import SortIcon from '@material-ui/icons/Sort';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {useSelectorStyles, useMenuStyles, useIconStyles, useSkeletonStyles} from './Styles';
+import React, {useEffect} from 'react'
+import PropTypes from 'prop-types'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import Skeleton from '@material-ui/lab/Skeleton'
+import Grid from "@material-ui/core/Grid"
+import SortIcon from '@material-ui/icons/Sort'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import {useSelectorStyles, useMenuStyles, useIconStyles, useSkeletonStyles} from './Styles'
 
 import {
 	GET_BRANCHES_REQUESTED, SET_CURRENT_BRANCH_REQUESTED
@@ -37,7 +38,7 @@ const Navbar = ({
 }) => {
 
 	useEffect(() => {
-		getBranches();
+		getBranches()
 	}, [])
 
 	const selectorStyles = useSelectorStyles()
@@ -56,17 +57,18 @@ const Navbar = ({
         horizontal: "left"
     },
     getContentAnchorEl: null
-	};
+	}
 
   const handleChange = (event) => {
     setCurrentBranchIndex(event.target.value);
-  };
+  }
 
   const iconComponent = (props) => {
     return (
       <ExpandMoreIcon className={props.className + " " + iconStyles.icon}/>
   	)
-	};
+	}
+
 	return (
 		<>
 			<Grid
@@ -92,8 +94,15 @@ const Navbar = ({
 				}
 			</Grid>
 		</>
-	);
-};
+	)
+}
+
+Navbar.propTypes = {
+	branches: PropTypes.array,
+	currentBranch: PropTypes.number,
+  getBranches: PropTypes.func.isRequired,
+	setCurrentBranchIndex: PropTypes.func.isRequired
+}
 
 const mapStateToProps = (state) => ({
   branch: state.branch

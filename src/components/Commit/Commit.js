@@ -133,10 +133,15 @@ const Commit = ({message, userId, userName, daysBefore, commitSha, shaUrl, repoU
 };
 
 Commit.propTypes = {
-	title: PropTypes.string,
-	userId: PropTypes.string,
-	daysBefore: PropTypes.number,
-	sha: PropTypes.string,
+	message: PropTypes.string.isRequired,
+	userId: PropTypes.string.isRequired, 
+	userName: PropTypes.string.isRequired, 
+	daysBefore: PropTypes.string.isRequired, 
+	commitSha: PropTypes.string.isRequired, 
+	shaUrl: PropTypes.string.isRequired, 
+	repoUrl: PropTypes.string.isRequired, 
+	userUrl: PropTypes.string.isRequired, 
+	avatarUrl: PropTypes.string.isRequired
 };
 
 export default Commit;

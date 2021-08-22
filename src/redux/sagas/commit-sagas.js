@@ -21,7 +21,6 @@ import getInfoCommit from './../../utils/transform/getInfoCommit'
 function* getCommits({payload}) {
 	const data = yield call(getAllCommits, payload.branch, payload.page)
 	const commits = getInfoCommit(data, payload.branch, payload.page)
-	console.log('dentro de saga', commits)
 	yield put({type: GET_COMMITS, payload: commits})
 }
 

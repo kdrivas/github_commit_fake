@@ -12,10 +12,8 @@ const initialState = {
 export default(state = initialState, {type, payload}) => {
 	switch(type) {
 		case GET_COMMITS:
-			console.log('dentro de reducer payload', payload)
 			const commitData = payload
 			const newCommit = {...commitData, ...state.commits}
-			console.log('dentro del reducer newCommit', newCommit)
 			return {
 				...state,
 				commits: newCommit,

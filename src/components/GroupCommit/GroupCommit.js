@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import ListCommit from "../ListCommit/ListCommit"
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import {connect} from 'react-redux'
 import './GroupCommit.css'
 
@@ -35,7 +35,6 @@ const GroupCommit = ({
 		if (branches.length && commits[`${branches[currentBranch].commit.sha}-${currentPage}`] === undefined){
 			const payload = {'branch': branches[currentBranch].commit.sha, 'page': currentPage}
 			getCommits(payload)
-			console.log('pasando el effect', commits)
 		}
 	}, [branches, currentPage])
 
@@ -45,17 +44,21 @@ const GroupCommit = ({
 				(
 				<div className="grid-commit">
 					{
-						Object.keys(commits[`${branches[currentBranch].commit.sha}-${currentPage}`]).map(element => <CommitSection listCommit={commits[`${branches[currentBranch].commit.sha}-${currentPage}`][element]} date={element}/>)
+						Object.keys(commits[`${branches[currentBranch].commit.sha}-${currentPage}`]).map((element, index) => <CommitSection listCommit={commits[`${branches[currentBranch].commit.sha}-${currentPage}`][element]} date={element} key={index}/>)
 					}
 				</div>) : ((branches.length > 0  && commits[`${branches[currentBranch].commit.sha}-${currentPage}`] !== undefined && Object.keys(commits[`${branches[currentBranch].commit.sha}-${currentPage}`]).length == 0) ? <div>No more commits</div> : <CircularProgress disableShrink />)
 			}
 		</div>
-	);
-};
+	)
+}
 
 GroupCommit.propTypes = {
-	
-};
+	branches: PropTypes.array,
+	currentBranch: PropTypes.number,
+	commits: PropTypes.shape({commit: PropTypes.string}),
+	currentPage: PropTypes.number,
+	getCommits: PropTypes.func.isRequired
+}
 
 const mapStateToProps = (state) => ({
   branch: state.branch,
@@ -66,4 +69,4 @@ const mapDispatchToProps = (dispatch) => ({
   getCommits: (data) => dispatch({ type: GET_COMMITS_REQUESTED, payload: data }),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(GroupCommit);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupCommit)

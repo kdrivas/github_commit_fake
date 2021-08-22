@@ -80,6 +80,7 @@
 }
 
 .popover__user-name {
+	color: #2f363d;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -90,6 +91,5 @@
 }
 
 .popover__user-name:visited {
-	color: #2f363d;
 	text-decoration: none;
 }
